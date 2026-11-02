@@ -1,0 +1,8 @@
+'use client'
+import type { SiteTemplatePageProps } from '../../../types'
+import { Shell, PageHero, CTA } from '../components/Shell'
+import { Directory } from '../components/Directory'
+import { Ticker } from '../components/Ticker'
+import { headings, teams, text } from '../content/common'
+import recipes from '../content/recipes.json'
+export default function RecipesPage({locale='zh',basePath}:SiteTemplatePageProps){const h=headings.recipes,categories=Object.fromEntries(teams.map(t=>[t.en,t]));return <Shell locale={locale} basePath={basePath}><PageHero label={h.label[locale]} title={h.title[locale]} description={h.description[locale]}/><Ticker locale={locale} label={text('配方库 · 15 个现成自动化','Recipe library - 15 ready-made automations')[locale]} items={[text('15 个现成配方','15 ready-made recipes'),text('从入门到进阶','Beginner to advanced'),text('每周新增配方','New recipes shipped weekly'),text('一键复制','Copy in one click'),text('适配你的工具','Adapt to your stack')].map(t=>t[locale])}/><div className="ax-distribution ax-cross"><div><strong>{recipes.length}</strong><p>{text('覆盖 6 个团队的现成配方','ready-made recipes across 6 teams')[locale]}</p></div><div>{teams.map(team=>{const count=recipes.filter(r=>r.category===team.en).length;return <div className="ax-chart-row" key={team.en}><span>{team[locale]}</span><div><i style={{width:`${count/3*100}%`}}/></div><small>{count}</small></div>})}</div></div><Directory items={recipes.map(item=>({...item,name:item.title.en}))} categories={categories} locale={locale} kind="recipes"/><CTA locale={locale} basePath={basePath} title={text('还没找到需要的配方？','Don’t see the recipe you need?')[locale]} description={text('从画布开始构建，或告诉我们你想自动化的工作。','Build it from scratch on the canvas, or tell us what you’re trying to automate.')[locale]}/></Shell>}

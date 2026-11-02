@@ -1,0 +1,106 @@
+{
+  "id": "aigentx",
+  "name": "Aigent · AI 工作流自动化",
+  "localizedNames": {
+    "en": "Aigent · AI workflow automation"
+  },
+  "gitUrl": "https://github.com/weelume/aigentx-template",
+  "sceneId": "corporate-site",
+  "listed": false,
+  "tags": [
+    "AI 自动化",
+    "青绿粒子",
+    "工作流",
+    "中英文",
+    "PC / iPad / H5"
+  ],
+  "summary": "深色青绿 AI 自动化官网，包含动态粒子球、实时运行流、应用目录、流程配方、用量计费、博客文章及本地演示表单。",
+  "accentColor": "#55f1c5",
+  "cover": "/templates/aigentx/screenshots/desktop-home.webp",
+  "screenshots": [
+    {
+      "src": "/templates/aigentx/screenshots/desktop-home.webp",
+      "alt": "Aigent desktop 首页",
+      "device": "desktop",
+      "width": 1430,
+      "height": 993
+    },
+    {
+      "src": "/templates/aigentx/screenshots/desktop-integrations.webp",
+      "alt": "Aigent desktop 应用集成",
+      "device": "desktop",
+      "width": 1430,
+      "height": 993
+    },
+    {
+      "src": "/templates/aigentx/screenshots/desktop-blog.webp",
+      "alt": "Aigent desktop 博客",
+      "device": "desktop",
+      "width": 1430,
+      "height": 993
+    },
+    {
+      "src": "/templates/aigentx/screenshots/desktop-contact.webp",
+      "alt": "Aigent desktop 联系",
+      "device": "desktop",
+      "width": 1430,
+      "height": 993
+    },
+    {
+      "src": "/templates/aigentx/screenshots/tablet-home.webp",
+      "alt": "Aigent tablet 首页",
+      "device": "tablet",
+      "width": 824,
+      "height": 1166
+    },
+    {
+      "src": "/templates/aigentx/screenshots/tablet-integrations.webp",
+      "alt": "Aigent tablet 应用集成",
+      "device": "tablet",
+      "width": 824,
+      "height": 1166
+    },
+    {
+      "src": "/templates/aigentx/screenshots/tablet-blog.webp",
+      "alt": "Aigent tablet 博客",
+      "device": "tablet",
+      "width": 824,
+      "height": 1166
+    },
+    {
+      "src": "/templates/aigentx/screenshots/tablet-contact.webp",
+      "alt": "Aigent tablet 联系",
+      "device": "tablet",
+      "width": 824,
+      "height": 1166
+    },
+    {
+      "src": "/templates/aigentx/screenshots/mobile-home.webp",
+      "alt": "Aigent mobile 首页",
+      "device": "mobile",
+      "width": 380,
+      "height": 822
+    },
+    {
+      "src": "/templates/aigentx/screenshots/mobile-integrations.webp",
+      "alt": "Aigent mobile 应用集成",
+      "device": "mobile",
+      "width": 380,
+      "height": 822
+    },
+    {
+      "src": "/templates/aigentx/screenshots/mobile-blog.webp",
+      "alt": "Aigent mobile 博客",
+      "device": "mobile",
+      "width": 380,
+      "height": 822
+    },
+    {
+      "src": "/templates/aigentx/screenshots/mobile-contact.webp",
+      "alt": "Aigent mobile 联系",
+      "device": "mobile",
+      "width": 380,
+      "height": 822
+    }
+  ]
+}

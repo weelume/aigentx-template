@@ -1,0 +1,10 @@
+'use client'
+import Link from 'next/link'
+import type { SiteTemplatePageProps } from '../../../types'
+import { Shell, CTA, hrefFor } from '../components/Shell'
+import { Reveal } from '../components/Motion'
+import { text } from '../content/common'
+import articles from '../content/articles.json'
+import { articleCategories, articleDate } from './BlogPage'
+import { asset } from '../config/brand'
+export default function ArticlePage({locale='zh',basePath,slug}:SiteTemplatePageProps&{slug:string}){const article=articles.find(a=>a.slug===slug);if(!article)throw new Error('Unknown article: '+slug);return <Shell locale={locale} basePath={basePath}><header className="ax-article-head ax-cross"><Link className="ax-back" href={hrefFor(basePath,locale,'blog')}>{text('返回博客','Back to blog')[locale]}</Link><span className="ax-eyebrow">{articleCategories[article.category as keyof typeof articleCategories][locale]}</span><h1>{article.title[locale]}</h1><p>{article.author} · {articleDate(article.date,locale)}</p></header><Reveal><img className="ax-article-cover" src={asset(article.image)} alt={article.imageAlt[locale]}/></Reveal><article className="ax-article-body">{article.blocks.map((block,i)=>block.kind==='heading'?<h2 key={i}>{block[locale]}</h2>:<p key={i}>{block[locale]}</p>)}</article><CTA locale={locale} basePath={basePath} title={text('喜欢这篇文章？','Enjoyed this post?')[locale]} description={text('看看智能工作流能为你的团队带来什么。','See what Aigent can automate for your team.')[locale]}/></Shell>}

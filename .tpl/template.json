@@ -1,0 +1,274 @@
+{
+  "$schema": "./schemas/template.schema.json",
+  "format": "git-template",
+  "formatVersion": "0.2.0",
+  "id": "aigentx",
+  "version": "1.0.0",
+  "name": "Aigent · AI 工作流自动化",
+  "localizedNames": {
+    "en": "Aigent · AI workflow automation"
+  },
+  "gitUrl": "https://github.com/weelume/aigentx-template",
+  "sceneId": "corporate-site",
+  "listed": false,
+  "tags": [
+    "AI 自动化",
+    "青绿粒子",
+    "工作流",
+    "中英文",
+    "PC / iPad / H5"
+  ],
+  "stack": [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Framer Motion"
+  ],
+  "summary": "深色青绿 AI 自动化官网，包含动态粒子球、实时运行流、应用目录、流程配方、用量计费、博客文章及本地演示表单。",
+  "localizedSummaries": {
+    "en": "A bilingual dark AI workflow website with an interactive particle sphere, integrations, recipes, usage pricing, ten articles and a local demo contact form."
+  },
+  "accentColor": "#55f1c5",
+  "cover": "assets/desktop-home.webp",
+  "screenshots": [
+    {
+      "src": "assets/desktop-home.webp",
+      "alt": "Aigent desktop 首页",
+      "device": "desktop",
+      "width": 1430,
+      "height": 993,
+      "surfaceId": "site",
+      "pageSlug": ""
+    },
+    {
+      "src": "assets/desktop-integrations.webp",
+      "alt": "Aigent desktop 应用集成",
+      "device": "desktop",
+      "width": 1430,
+      "height": 993,
+      "surfaceId": "site",
+      "pageSlug": "integrations"
+    },
+    {
+      "src": "assets/desktop-blog.webp",
+      "alt": "Aigent desktop 博客",
+      "device": "desktop",
+      "width": 1430,
+      "height": 993,
+      "surfaceId": "site",
+      "pageSlug": "blog"
+    },
+    {
+      "src": "assets/desktop-contact.webp",
+      "alt": "Aigent desktop 联系",
+      "device": "desktop",
+      "width": 1430,
+      "height": 993,
+      "surfaceId": "site",
+      "pageSlug": "contact"
+    },
+    {
+      "src": "assets/tablet-home.webp",
+      "alt": "Aigent tablet 首页",
+      "device": "tablet",
+      "width": 824,
+      "height": 1166,
+      "surfaceId": "site",
+      "pageSlug": ""
+    },
+    {
+      "src": "assets/tablet-integrations.webp",
+      "alt": "Aigent tablet 应用集成",
+      "device": "tablet",
+      "width": 824,
+      "height": 1166,
+      "surfaceId": "site",
+      "pageSlug": "integrations"
+    },
+    {
+      "src": "assets/tablet-blog.webp",
+      "alt": "Aigent tablet 博客",
+      "device": "tablet",
+      "width": 824,
+      "height": 1166,
+      "surfaceId": "site",
+      "pageSlug": "blog"
+    },
+    {
+      "src": "assets/tablet-contact.webp",
+      "alt": "Aigent tablet 联系",
+      "device": "tablet",
+      "width": 824,
+      "height": 1166,
+      "surfaceId": "site",
+      "pageSlug": "contact"
+    },
+    {
+      "src": "assets/mobile-home.webp",
+      "alt": "Aigent mobile 首页",
+      "device": "mobile",
+      "width": 380,
+      "height": 822,
+      "surfaceId": "site",
+      "pageSlug": ""
+    },
+    {
+      "src": "assets/mobile-integrations.webp",
+      "alt": "Aigent mobile 应用集成",
+      "device": "mobile",
+      "width": 380,
+      "height": 822,
+      "surfaceId": "site",
+      "pageSlug": "integrations"
+    },
+    {
+      "src": "assets/mobile-blog.webp",
+      "alt": "Aigent mobile 博客",
+      "device": "mobile",
+      "width": 380,
+      "height": 822,
+      "surfaceId": "site",
+      "pageSlug": "blog"
+    },
+    {
+      "src": "assets/mobile-contact.webp",
+      "alt": "Aigent mobile 联系",
+      "device": "mobile",
+      "width": 380,
+      "height": 822,
+      "surfaceId": "site",
+      "pageSlug": "contact"
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "site",
+      "name": "智能自动化官网",
+      "platform": "pc",
+      "locales": [
+        "zh",
+        "en"
+      ],
+      "pages": [
+        {
+          "slug": "",
+          "title": "首页",
+          "localizedTitles": {
+            "en": "Home"
+          }
+        },
+        {
+          "slug": "integrations",
+          "title": "应用集成",
+          "localizedTitles": {
+            "en": "Integrations"
+          }
+        },
+        {
+          "slug": "recipes",
+          "title": "流程配方",
+          "localizedTitles": {
+            "en": "Recipes"
+          }
+        },
+        {
+          "slug": "pricing",
+          "title": "价格方案",
+          "localizedTitles": {
+            "en": "Pricing"
+          }
+        },
+        {
+          "slug": "blog",
+          "title": "博客",
+          "localizedTitles": {
+            "en": "Blog"
+          }
+        },
+        {
+          "slug": "contact",
+          "title": "联系我们",
+          "localizedTitles": {
+            "en": "Contact"
+          }
+        },
+        {
+          "slug": "blog/introducing-the-workflow-canvas",
+          "title": "工作流画布，正式登场",
+          "localizedTitles": {
+            "en": "Introducing the workflow canvas"
+          }
+        },
+        {
+          "slug": "blog/designing-for-reliability-not-just-speed",
+          "title": "为可靠性而设计",
+          "localizedTitles": {
+            "en": "Designing for reliability, not just speed"
+          }
+        },
+        {
+          "slug": "blog/how-aigent-runs-2-million-workflows-a-day",
+          "title": "每天运行两百万次工作流",
+          "localizedTitles": {
+            "en": "How Aigent runs 2 million workflows a day"
+          }
+        },
+        {
+          "slug": "blog/why-we-built-our-own-step-runtime",
+          "title": "为什么自建步骤运行时",
+          "localizedTitles": {
+            "en": "Why we built our own step runtime"
+          }
+        },
+        {
+          "slug": "blog/your-first-automation-start-to-finish",
+          "title": "完成你的第一个自动化",
+          "localizedTitles": {
+            "en": "Your first automation, start to finish"
+          }
+        },
+        {
+          "slug": "blog/five-patterns-every-automation-should-follow",
+          "title": "可靠自动化应遵循的五个习惯",
+          "localizedTitles": {
+            "en": "Five patterns every automation should follow"
+          }
+        },
+        {
+          "slug": "blog/aigent-raises-its-series-a",
+          "title": "Aigent 完成 A 轮融资",
+          "localizedTitles": {
+            "en": "Aigent raises its Series A"
+          }
+        },
+        {
+          "slug": "blog/why-we-moved-to-usage-based-pricing",
+          "title": "为什么转向按用量收费",
+          "localizedTitles": {
+            "en": "Why we moved to usage-based pricing"
+          }
+        },
+        {
+          "slug": "blog/how-a-40-person-support-team-cut-response-time-by-70-percent",
+          "title": "40 人支持团队如何缩短响应时间",
+          "localizedTitles": {
+            "en": "How a 40-person support team cut response time by 70 percent"
+          }
+        },
+        {
+          "slug": "blog/scaling-automation-across-twelve-markets",
+          "title": "将自动化扩展到十二个市场",
+          "localizedTitles": {
+            "en": "Scaling automation across twelve markets"
+          }
+        }
+      ]
+    }
+  ],
+  "license": {
+    "type": "restricted",
+    "file": "docs/LICENSE.md",
+    "summary": "参考站设计与素材的学习复刻。未取得原设计及图片的商业再分发许可；字体保留各自许可。",
+    "redistributionAllowed": false
+  }
+}

@@ -1,0 +1,13 @@
+'use client'
+import Link from 'next/link'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import type { SiteTemplatePageProps } from '../../../types'
+import { Shell, PageHero, CTA, hrefFor } from '../components/Shell'
+import { headings, text } from '../content/common'
+import articles from '../content/articles.json'
+import { asset } from '../config/brand'
+import { articleDate } from '../content/date'
+export { articleDate } from '../content/date'
+export const articleCategories={Product:text('产品','Product'),Engineering:text('工程','Engineering'),Guides:text('指南','Guides'),Company:text('公司','Company'),Customers:text('客户','Customers')}
+export default function BlogPage({locale='zh',basePath}:SiteTemplatePageProps){const [category,setCategory]=useState('All'),h=headings.blog,featured=articles[0];return <Shell locale={locale} basePath={basePath}><PageHero label={h.label[locale]} title={h.title[locale]} description={h.description[locale]}/><section className="ax-section ax-cross"><Link className="ax-featured ax-glass" href={hrefFor(basePath,locale,'blog/'+featured.slug)}><img src={asset(featured.image)} alt={featured.imageAlt[locale]}/><div><span className="ax-eyebrow">{text('精选','Featured')[locale]}</span><h2>{featured.title[locale]}</h2><p>{featured.summary[locale]}</p><small>{featured.author} · {articleDate(featured.date,locale)}</small></div></Link><div className="ax-filters ax-blog-filters">{['All',...Object.keys(articleCategories)].map(key=><button key={key} aria-pressed={category===key} onClick={()=>setCategory(key)}>{key==='All'?text('全部','All')[locale]:articleCategories[key as keyof typeof articleCategories][locale]}</button>)}</div><div className="ax-blog-grid"><AnimatePresence mode="popLayout">{articles.filter(a=>category==='All'||a.category===category).map(article=><motion.div layout key={article.slug} initial={{opacity:0,y:18}} animate={{opacity:1,y:0}} exit={{opacity:0,scale:.98}} transition={{duration:.3}}><Link className="ax-blog-card ax-glass" href={hrefFor(basePath,locale,'blog/'+article.slug)}><div className="ax-blog-image"><img loading="lazy" src={asset(article.image)} alt={article.imageAlt[locale]}/></div><div className="ax-blog-body"><small><b>{articleCategories[article.category as keyof typeof articleCategories][locale]}</b> · {articleDate(article.date,locale)}</small><h3>{article.title[locale]}</h3><p>{article.summary[locale]}</p><small>{article.author}</small></div></Link></motion.div>)}</AnimatePresence></div></section><CTA locale={locale} basePath={basePath} title={text('不错过每一次工作流更新','Never miss a workflow update.')[locale]} description={text('来自构建者的产品消息与工程笔记。','Product news and engineering notes, straight from the team building it.')[locale]}/></Shell>}

@@ -1,0 +1,243 @@
+[
+  {
+    "category": "Sales",
+    "title": {
+      "zh": "新 Salesforce 线索同步到 Slack",
+      "en": "New Salesforce lead, straight to Slack"
+    },
+    "description": {
+      "zh": "新线索到达时，立即通知对应频道。",
+      "en": "Notify the right channel the moment a new lead comes in."
+    },
+    "apps": [
+      "Salesforce",
+      "Slack"
+    ],
+    "steps": 3
+  },
+  {
+    "category": "Sales",
+    "title": {
+      "zh": "成交后自动创建 Stripe 账单",
+      "en": "Closed-won deal to Stripe invoice"
+    },
+    "description": {
+      "zh": "成交后立即生成并发送账单。",
+      "en": "Auto-generate and send the invoice as soon as a deal closes."
+    },
+    "apps": [
+      "Salesforce",
+      "Stripe"
+    ],
+    "steps": 5
+  },
+  {
+    "category": "Sales",
+    "title": {
+      "zh": "Calendly 预约同步 CRM 联系人",
+      "en": "Calendly booking to CRM contact"
+    },
+    "description": {
+      "zh": "每次预约都创建联系人并设置跟进提醒。",
+      "en": "Create the contact and set a follow-up reminder on every booking."
+    },
+    "apps": [
+      "Calendly",
+      "HubSpot"
+    ],
+    "steps": 4
+  },
+  {
+    "category": "Support",
+    "title": {
+      "zh": "新工单自动进入分流频道",
+      "en": "New ticket to Slack triage channel"
+    },
+    "description": {
+      "zh": "每张新工单立即进入正确的频道。",
+      "en": "Every new support ticket lands in the right channel instantly."
+    },
+    "apps": [
+      "Zendesk",
+      "Slack"
+    ],
+    "steps": 3
+  },
+  {
+    "category": "Support",
+    "title": {
+      "zh": "AI 起草工单回复",
+      "en": "AI-drafted ticket replies"
+    },
+    "description": {
+      "zh": "人工打开工单前，先准备常见问题回复草稿。",
+      "en": "Draft a first-pass reply for common tickets before an agent opens them."
+    },
+    "apps": [
+      "Zendesk",
+      "OpenAI"
+    ],
+    "steps": 6
+  },
+  {
+    "category": "Marketing",
+    "title": {
+      "zh": "表单提交同步邮件与频道",
+      "en": "Form submit to Mailchimp and Slack"
+    },
+    "description": {
+      "zh": "新注册用户自动打标签、接收邮件并通知团队。",
+      "en": "Every new signup gets tagged, emailed, and announced."
+    },
+    "apps": [
+      "Typeform",
+      "Mailchimp",
+      "Slack"
+    ],
+    "steps": 4
+  },
+  {
+    "category": "Marketing",
+    "title": {
+      "zh": "AI 自动生成内容提纲",
+      "en": "AI content brief generator"
+    },
+    "description": {
+      "zh": "把一行主题转为 Notion 中的完整内容提纲。",
+      "en": "Turn a one-line prompt into a full content brief in Notion."
+    },
+    "apps": [
+      "Notion",
+      "OpenAI"
+    ],
+    "steps": 6
+  },
+  {
+    "category": "Engineering",
+    "title": {
+      "zh": "GitHub 合并请求同步 Slack 与 Linear",
+      "en": "GitHub PR to Slack and Linear"
+    },
+    "description": {
+      "zh": "通知代码审阅者，同时更新关联问题。",
+      "en": "Reviewers get pinged and the linked issue updates itself."
+    },
+    "apps": [
+      "GitHub",
+      "Slack"
+    ],
+    "steps": 4
+  },
+  {
+    "category": "Engineering",
+    "title": {
+      "zh": "CI 失败时提醒值班工程师",
+      "en": "CI failure to PagerDuty page"
+    },
+    "description": {
+      "zh": "构建失败时，几秒内提醒值班工程师。",
+      "en": "A red build pages the on-call engineer within seconds."
+    },
+    "apps": [
+      "GitHub",
+      "PagerDuty"
+    ],
+    "steps": 5
+  },
+  {
+    "category": "Engineering",
+    "title": {
+      "zh": "使用 AI 分流缺陷报告",
+      "en": "Bug report triage with AI"
+    },
+    "description": {
+      "zh": "自动标记、排序并分配新问题。",
+      "en": "New issues get labeled, prioritized, and assigned automatically."
+    },
+    "apps": [
+      "Jira",
+      "OpenAI"
+    ],
+    "steps": 7
+  },
+  {
+    "category": "Operations",
+    "title": {
+      "zh": "新员工入职资料包",
+      "en": "New hire onboarding kit"
+    },
+    "description": {
+      "zh": "第一天就备好 Slack 频道与 Notion 清单。",
+      "en": "A new Slack channel and Notion checklist, ready on day one."
+    },
+    "apps": [
+      "Notion",
+      "Slack"
+    ],
+    "steps": 5
+  },
+  {
+    "category": "Operations",
+    "title": {
+      "zh": "费用审批工作流",
+      "en": "Expense approval workflow"
+    },
+    "description": {
+      "zh": "将申请交给正确审批人，并同步决策结果。",
+      "en": "Requests route to the right approver and post the decision to Slack."
+    },
+    "apps": [
+      "Airtable",
+      "Slack"
+    ],
+    "steps": 5
+  },
+  {
+    "category": "Finance",
+    "title": {
+      "zh": "新支付通知并记录",
+      "en": "New payment to Slack and log"
+    },
+    "description": {
+      "zh": "每次支付发生时立即记录并通知。",
+      "en": "Every payment gets logged and announced the moment it lands."
+    },
+    "apps": [
+      "Stripe",
+      "Slack"
+    ],
+    "steps": 3
+  },
+  {
+    "category": "Finance",
+    "title": {
+      "zh": "支付失败，自动重试并提醒",
+      "en": "Failed payment, retry and alert"
+    },
+    "description": {
+      "zh": "自动重试，连续失败两次后提醒财务。",
+      "en": "Retries fire automatically and finance gets an alert if it fails twice."
+    },
+    "apps": [
+      "Stripe",
+      "Twilio"
+    ],
+    "steps": 5
+  },
+  {
+    "category": "Finance",
+    "title": {
+      "zh": "通过短信提醒逾期账单",
+      "en": "Invoice reminders via SMS"
+    },
+    "description": {
+      "zh": "无需人工操作，温和提醒逾期账单。",
+      "en": "Overdue invoices get a friendly nudge without anyone lifting a finger."
+    },
+    "apps": [
+      "Stripe",
+      "Twilio"
+    ],
+    "steps": 3
+  }
+]

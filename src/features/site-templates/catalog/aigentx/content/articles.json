@@ -1,0 +1,512 @@
+[
+  {
+    "slug": "introducing-the-workflow-canvas",
+    "title": {
+      "zh": "工作流画布，正式登场",
+      "en": "Introducing the workflow canvas"
+    },
+    "summary": {
+      "zh": "一个让自动化搭建更直观的可视化编辑器。",
+      "en": "A visual editor for building automations without fighting a form."
+    },
+    "category": "Product",
+    "author": "Aigent Team",
+    "date": "2026-08-05",
+    "image": "BNCkFHOwmuTnHmZXB1XhB8ZdsiQ.png",
+    "imageAlt": {
+      "zh": "工作流画布，正式登场示意图",
+      "en": "Workflow canvas visual editor showing connected trigger, enrich, and action nodes"
+    },
+    "blocks": [
+      {
+        "kind": "paragraph",
+        "en": "For the first year of Aigent, every workflow lived in a form. You picked a trigger from a dropdown, added steps one at a time, and hoped the linear list in front of you matched the branching logic in your head. It worked, but it never felt like the thing it was describing.",
+        "zh": "Aigent 的第一年，每个工作流都在表单中编辑。选择触发器、逐项添加步骤，再想象这份线性列表能否表达脑中的分支逻辑。它能工作，但很难呈现工作流本来的样子。"
+      },
+      {
+        "kind": "heading",
+        "en": "What the canvas actually changes",
+        "zh": "画布真正改变了什么"
+      },
+      {
+        "kind": "paragraph",
+        "en": "The workflow canvas replaces that form with a real graph. Triggers, enrichment steps, conditions, and actions are nodes you connect directly, and the shape on screen is the shape that runs in production. When a run fails, you click the node that failed and see the exact payload it received, not a log line you have to decode.",
+        "zh": "工作流画布用真实图结构替代表单。触发器、补充上下文、条件和操作都成为可以直接连接的节点。屏幕上的结构，就是实际运行的结构。发生失败时，点击对应节点就能看到它收到的完整数据。"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Conditional branches were the forcing function. A linear list can fake a single if/else, but real workflows fork three or four ways depending on what a model or a webhook returns. The canvas draws every branch as its own path, so you can see at a glance which one fired for a given run.",
+        "zh": "条件分支推动了这次改变。线性列表可以勉强展示一次条件判断，但真实流程可能根据模型或 Webhook 的返回值分成三四条路径。画布让每条路径单独可见，也能看清某次运行选择了哪一条。"
+      },
+      {
+        "kind": "heading",
+        "en": "What’s next",
+        "zh": "接下来"
+      },
+      {
+        "kind": "paragraph",
+        "en": "This is the first version. Nested sub-workflows and inline testing are next, both because they were the two things beta users asked for most.",
+        "zh": "这是第一个版本。后续将加入嵌套子工作流和内联测试，这也是测试用户最常提出的两项需求。"
+      }
+    ]
+  },
+  {
+    "slug": "designing-for-reliability-not-just-speed",
+    "title": {
+      "zh": "为可靠性而设计",
+      "en": "Designing for reliability, not just speed"
+    },
+    "summary": {
+      "zh": "先考虑失败模式，再讨论速度。",
+      "en": "How we think about failure modes before we think about latency."
+    },
+    "category": "Product",
+    "author": "Priya Nair",
+    "date": "2026-07-02",
+    "image": "fBzIojFP10dQ4Db9hp43mvmCE.png",
+    "imageAlt": {
+      "zh": "为可靠性而设计示意图",
+      "en": "Illustration representing reliability-first automation design over raw speed"
+    },
+    "blocks": [
+      {
+        "kind": "paragraph",
+        "en": "Most automation platforms optimize for the demo: a trigger fires, three steps run, a green checkmark appears. Production looks nothing like that. APIs time out, a model returns malformed JSON, a webhook fires twice. The question that actually matters is what happens next.",
+        "zh": "许多自动化平台围绕演示优化：触发器启动，几个步骤完成，显示绿色对勾。但真实环境里，接口会超时，模型会返回格式错误的 JSON，Webhook 也可能重复到达。真正关键的是接下来系统如何处理。"
+      },
+      {
+        "kind": "heading",
+        "en": "Retries are not a feature, they are the baseline",
+        "zh": "重试是基础能力"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Every step in Aigent retries with backoff by default, and every retry is visible in the run log, not hidden behind a spinner. If a step fails three times, the workflow pauses and routes to a human instead of silently dropping the run. We built this in before we built a UI for it, because a workflow that fails silently is worse than one that never ran.",
+        "zh": "每个步骤默认采用退避重试，重试记录在运行日志中清晰可见。连续三次失败后，工作流暂停并转交人工处理，不会悄悄丢弃。静默失败，比没有运行更危险。"
+      },
+      {
+        "kind": "paragraph",
+        "en": "The harder problem is idempotency. If a payment webhook fires twice because a network blip caused a retry, running the charge step twice is a real financial bug, not an edge case. Every action step in Aigent takes an idempotency key derived from the run, so a duplicate delivery is a no-op instead of a double charge.",
+        "zh": "更难的是幂等性。网络波动可能让支付事件重复到达，如果重复扣款，这是真实业务错误。操作步骤使用从运行信息派生的稳定幂等键，让重复投递不会造成重复执行。"
+      },
+      {
+        "kind": "heading",
+        "en": "Speed is what you get after reliability",
+        "zh": "可靠之后，再优化速度"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Once a system does not lose data, you can start making it fast. Median step latency on Aigent is 1.2 seconds, but that number only means something because 99.98% of runs also complete correctly. We would rather ship a slower step that always finishes than a fast one that sometimes does not.",
+        "zh": "只有系统不再丢失数据，速度才有意义。1.2 秒的步骤延迟中位数，与 99.98% 的正确完成率必须同时成立。我们优先保证每一步能够可靠完成。"
+      }
+    ]
+  },
+  {
+    "slug": "how-aigent-runs-2-million-workflows-a-day",
+    "title": {
+      "zh": "每天运行两百万次工作流",
+      "en": "How Aigent runs 2 million workflows a day"
+    },
+    "summary": {
+      "zh": "看看队列、执行器和重试逻辑如何协同。",
+      "en": "A look inside the queue, the workers, and the retry logic."
+    },
+    "category": "Engineering",
+    "author": "Tom Reyes",
+    "date": "2026-07-28",
+    "image": "NLIMJi2m2kGn5PTYT4aP4xnwc.png",
+    "imageAlt": {
+      "zh": "每天运行两百万次工作流示意图",
+      "en": "Diagram of Aigent's queue, workers, and retry logic running millions of workflows"
+    },
+    "blocks": [
+      {
+        "kind": "paragraph",
+        "en": "Two million workflow runs a day sounds like a big-infrastructure problem, and in some ways it is. But most of the engineering effort went into a smaller problem: making sure a single noisy customer’s traffic never slows down anyone else’s.",
+        "zh": "每天两百万次运行，看起来需要庞大的基础设施。但大量工程投入其实在解决一个更具体的问题：不能让一个客户的突发流量拖慢其他人。"
+      },
+      {
+        "kind": "heading",
+        "en": "Isolation over sharing",
+        "zh": "隔离优先"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Each workflow run is scheduled on a queue partitioned by workspace, not by a global FIFO. A workspace running 50,000 runs a month cannot starve a workspace running 500. We learned this the hard way in the first six months, when one customer’s retry storm added seconds of latency to every other account on the platform for about twenty minutes.",
+        "zh": "队列按工作空间分区，而非使用全局先进先出。每月五万次运行的空间不应挤占只有五百次的空间。早期一次客户重试风暴曾让其他账户持续二十分钟增加延迟，这促使我们改进隔离。"
+      },
+      {
+        "kind": "paragraph",
+        "en": "The runtime itself is stateless between steps. Every step reads its input from durable storage and writes its output back before the next step is scheduled, which means a worker can crash mid-run and another worker picks up exactly where it left off, with no in-memory state lost.",
+        "zh": "运行时在步骤之间保持无状态。每一步先从持久存储读取输入，再将输出写回，然后才调度下一步。执行器中途崩溃时，另一个执行器可以从原位置继续。"
+      },
+      {
+        "kind": "heading",
+        "en": "What broke at scale",
+        "zh": "规模增长后遇到的问题"
+      },
+      {
+        "kind": "paragraph",
+        "en": "The first version stored full payloads in the run’s metadata row, which worked fine until a customer piped a 4MB JSON blob through a workflow and the metadata table started timing out on writes. Large payloads now live in object storage with a reference in the run row, and that one change cut our p99 step latency by more than half.",
+        "zh": "最初完整数据保存在运行元数据行中。后来一位客户传入 4MB JSON，写入开始超时。现在大型载荷保存在对象存储中，运行行只保留引用，这项调整将 p99 步骤延迟降低了一半以上。"
+      }
+    ]
+  },
+  {
+    "slug": "why-we-built-our-own-step-runtime",
+    "title": {
+      "zh": "为什么自建步骤运行时",
+      "en": "Why we built our own step runtime"
+    },
+    "summary": {
+      "zh": "通用编排工具无法提供所需的全部保证。",
+      "en": "Off-the-shelf orchestrators didn't give us the guarantees we needed."
+    },
+    "category": "Engineering",
+    "author": "Tom Reyes",
+    "date": "2026-06-30",
+    "image": "WTf1qE1hXztGVEMTWjaKasCZEw.png",
+    "imageAlt": {
+      "zh": "为什么自建步骤运行时示意图",
+      "en": "Illustration of a custom-built durable step runtime for AI-driven automations"
+    },
+    "blocks": [
+      {
+        "kind": "paragraph",
+        "en": "We evaluated three existing workflow engines before deciding to write our own step runtime. All three were good general-purpose tools. None of them were built for the specific shape of an AI-driven automation, where a single step might call a model, wait on a human approval, or both.",
+        "zh": "自建运行时之前，我们评估了三个现成工作流引擎。它们都是优秀的通用工具，但并非针对 AI 自动化：一个步骤可能调用模型、等待人工审批，或同时包含两者。"
+      },
+      {
+        "kind": "heading",
+        "en": "The problem with generic DAG engines",
+        "zh": "通用 DAG 引擎的限制"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Most workflow engines assume a step either succeeds or fails within seconds. An LLM call with tool use can take thirty seconds and involve multiple round trips inside what looks, from the outside, like a single step. A human-approval step can take three days. Retrofitting long-running, human-in-the-loop steps onto an engine built for short synchronous tasks meant fighting the abstraction at every layer.",
+        "zh": "多数引擎假设步骤会在几秒内成功或失败。但带工具调用的模型步骤可能持续三十秒，并包含多轮交互；人工审批可能等待三天。将这种长期等待强加给短同步任务抽象，会在每一层遇到阻力。"
+      },
+      {
+        "kind": "paragraph",
+        "en": "So the Aigent runtime treats every step as a durable, resumable unit of work from the start. A step can suspend itself waiting on an external event, whether that is a model finishing a tool call or a person clicking approve in Slack, and the runtime picks the run back up exactly where it paused, with full context intact.",
+        "zh": "因此，每个步骤从一开始就是可持久化、可恢复的工作单元。无论等待模型工具调用还是 Slack 中的审批，都能暂停，并带着完整上下文继续执行。"
+      },
+      {
+        "kind": "heading",
+        "en": "What we gave up",
+        "zh": "我们接受的取舍"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Building our own runtime means we do not get the community and tooling that comes with an established open-source engine. We accepted that tradeoff because the alternative was explaining, to every customer, which parts of the standard DAG model we had quietly broken to make AI steps work.",
+        "zh": "自建运行时意味着无法直接享用成熟开源引擎的社区和工具。我们接受这项成本，因为另一种选择，是不断向客户解释标准 DAG 模型在哪些地方被悄悄改坏了。"
+      }
+    ]
+  },
+  {
+    "slug": "your-first-automation-start-to-finish",
+    "title": {
+      "zh": "完成你的第一个自动化",
+      "en": "Your first automation, start to finish"
+    },
+    "summary": {
+      "zh": "无需代码，十分钟走通触发到执行。",
+      "en": "From trigger to action in under ten minutes, no code required."
+    },
+    "category": "Guides",
+    "author": "Aigent Team",
+    "date": "2026-08-01",
+    "image": "WzYo0KCrrI7HqVwDOeX9HzWlBE.png",
+    "imageAlt": {
+      "zh": "完成你的第一个自动化示意图",
+      "en": "Screenshot of a lead-routing automation built on the Aigent workflow canvas"
+    },
+    "blocks": [
+      {
+        "kind": "paragraph",
+        "en": "The fastest way to understand Aigent is to build one real automation, start to finish, rather than reading through every feature first. This walkthrough builds the workflow most teams ship first: routing a new lead to the right rep, enriched and scored before anyone touches it.",
+        "zh": "理解 Aigent 最快的方法，是从头到尾搭建一个真实自动化。本指南采用大多数团队的第一个场景：补全并评分新线索，再将它分配给合适的销售。"
+      },
+      {
+        "kind": "heading",
+        "en": "Pick the trigger",
+        "zh": "选择触发器"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Start on the canvas and add a Trigger node. For a lead-routing workflow, that is almost always a webhook from your form tool or CRM. Paste the webhook URL Aigent gives you into HubSpot or your form provider, and every new submission will start a run. You can test this immediately by submitting your own form and watching a run appear in the log within a second or two.",
+        "zh": "在画布上添加触发节点。线索分流通常使用表单或 CRM 的 Webhook。把生成的地址填到 HubSpot 或表单工具中，每次提交就能启动运行，并在日志中立即看到。"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Next, add an Enrich step and connect it to a data provider like Clearbit, then a Decide step that scores the lead using a model with a simple rules guardrail on top. Wire the Decide step’s output to two Act branches: one that routes to Salesforce for a rep to see, and one that skips low-quality leads into a nurture list instead.",
+        "zh": "接着添加补充上下文步骤，连接 Clearbit 等数据源，再添加决策步骤，结合模型评分和规则护栏。最后连接两条执行分支：优质线索进入 Salesforce，低质量线索进入培育列表。"
+      },
+      {
+        "kind": "heading",
+        "en": "Ship it, then watch it",
+        "zh": "上线后，持续观察"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Turn the workflow on and open the run log. The first real submission will show you every step’s payload, which is the fastest way to catch a mismatched field name or a scoring threshold that is too strict. Most teams tune the Decide step’s threshold twice in the first week based on what they see there, not based on guessing upfront.",
+        "zh": "开启流程并打开日志。第一次真实提交会展示每一步的数据，帮助发现字段名不匹配或评分阈值过严。多数团队会根据第一周的真实运行，调整两次决策阈值。"
+      }
+    ]
+  },
+  {
+    "slug": "five-patterns-every-automation-should-follow",
+    "title": {
+      "zh": "可靠自动化应遵循的五个习惯",
+      "en": "Five patterns every automation should follow"
+    },
+    "summary": {
+      "zh": "幂等、重试，以及凌晨两点能帮到你的设计。",
+      "en": "Idempotency, retries, and other habits that save you at 2am."
+    },
+    "category": "Guides",
+    "author": "Tom Reyes",
+    "date": "2026-06-20",
+    "image": "tA5iNCmYyIMw2FLEbraZ0WhgrDM.png",
+    "imageAlt": {
+      "zh": "可靠自动化应遵循的五个习惯示意图",
+      "en": "Illustration of reliable automation design patterns like retries and idempotency"
+    },
+    "blocks": [
+      {
+        "kind": "paragraph",
+        "en": "After watching several hundred teams build on Aigent, the workflows that hold up in production tend to share the same five habits. The ones that break at 2am usually skipped one of them.",
+        "zh": "观察数百个团队后，我们发现可靠工作流通常有五个共同习惯。那些在凌晨两点出故障的流程，往往忽略了其中之一。"
+      },
+      {
+        "kind": "heading",
+        "en": "Always give a step somewhere to fail to",
+        "zh": "给失败留一条明确路径"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Every Decide or Act step should have an explicit failure branch, even if that branch just notifies a human. A workflow with no failure path does not fail gracefully, it fails silently, and silent failures are the ones that cost you a customer before you know anything went wrong.",
+        "zh": "每个决策或执行步骤都应有显式失败分支，即使只是通知人工。没有失败路径的流程，往往会静默失败，在你察觉前就影响客户。"
+      },
+      {
+        "kind": "paragraph",
+        "en": "The second habit is treating idempotency as a design constraint from the first draft, not a fix applied after a duplicate-charge incident. If a step performs a side effect like charging a card or sending an email, give it a stable key derived from the run so a retry is a no-op.",
+        "zh": "第二个习惯是在最初设计时就考虑幂等性。涉及扣款、发邮件等副作用时，应使用稳定的运行键，让重试不会再次执行同一操作。"
+      },
+      {
+        "kind": "heading",
+        "en": "Keep enrichment separate from decisions",
+        "zh": "将补充信息与决策分开"
+      },
+      {
+        "kind": "paragraph",
+        "en": "The teams with the fewest production issues split fetching data from acting on it into two distinct steps, even when it is tempting to combine them. It makes every run easier to debug, because you can tell at a glance whether a bad outcome came from bad data or a bad decision.",
+        "zh": "生产问题较少的团队，会把获取数据和依据数据执行操作拆成两个步骤。这样更容易判断，错误结果究竟来自数据，还是来自决策。"
+      }
+    ]
+  },
+  {
+    "slug": "aigent-raises-its-series-a",
+    "title": {
+      "zh": "Aigent 完成 A 轮融资",
+      "en": "Aigent raises its Series A"
+    },
+    "summary": {
+      "zh": "继续投入可靠性和企业支持。",
+      "en": "New funding to help us go deeper on reliability and enterprise support."
+    },
+    "category": "Company",
+    "author": "Aigent Team",
+    "date": "2026-07-15",
+    "image": "8AyXqfNNH0SKCRq8sMTHiXz9iLw.png",
+    "imageAlt": {
+      "zh": "Aigent 完成 A 轮融资示意图",
+      "en": "Graphic announcing Aigent's Series A funding round"
+    },
+    "blocks": [
+      {
+        "kind": "paragraph",
+        "en": "Today we are announcing Aigent’s Series A. The round was led by our seed investors doubling down, joined by two new funds who spent time talking to customers before they talked to us, which is exactly the kind of diligence we wanted.",
+        "zh": "今天，我们宣布完成 A 轮融资。早期投资人继续支持，两家新基金加入。他们先与客户交流，再与我们交流，这正是我们期待的尽调方式。"
+      },
+      {
+        "kind": "heading",
+        "en": "What changes, and what does not",
+        "zh": "什么会改变，什么会延续"
+      },
+      {
+        "kind": "paragraph",
+        "en": "The product roadmap does not change. We were already building nested sub-workflows and inline testing before this round closed, and those stay the priority. What the round buys us is time: more engineers on the runtime team, and a support team that can keep response times where they are as we grow past our current customer base.",
+        "zh": "产品路线保持不变。嵌套子工作流和内联测试仍是优先事项。融资让我们能为运行时团队增加工程师，并扩大支持团队，在客户增长时继续保持响应速度。"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Pricing does not change either. We built usage-based pricing because it is the right model for a tool that runs in the background of someone’s business, not because we needed to prove growth to investors. That will not shift just because we have more capital in the bank.",
+        "zh": "价格也不会因为融资而改变。按用量收费，是因为它适合在业务后台持续运行的自动化工具，而不是为了向投资人证明增长。"
+      },
+      {
+        "kind": "heading",
+        "en": "Thank you",
+        "zh": "谢谢每一位客户"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Every one of our first hundred customers gave us direct, sometimes blunt feedback that shaped the product. This round is as much a reflection of that feedback as it is of anything we built ourselves.",
+        "zh": "最初一百位客户给出了直接、甚至尖锐的反馈。这些反馈塑造了产品。此次融资，同样体现了他们的贡献。"
+      }
+    ]
+  },
+  {
+    "slug": "why-we-moved-to-usage-based-pricing",
+    "title": {
+      "zh": "为什么转向按用量收费",
+      "en": "Why we moved to usage-based pricing"
+    },
+    "summary": {
+      "zh": "席位计费让自动化做得更多的团队付出更多。",
+      "en": "Seat-based pricing punished the teams doing the most automation."
+    },
+    "category": "Company",
+    "author": "Marcus Webb",
+    "date": "2026-06-25",
+    "image": "4aw9sd0JHf9P8SdVHoebC4ec8NA.png",
+    "imageAlt": {
+      "zh": "为什么转向按用量收费示意图",
+      "en": "Illustration comparing seat-based pricing to usage-based workflow pricing"
+    },
+    "blocks": [
+      {
+        "kind": "paragraph",
+        "en": "We priced Aigent by seats for our first eight months, and it was the wrong model. A five-person team running twenty automations was paying the same as a five-person team running two, which meant we were charging people for headcount instead of for the thing they were actually using our product to do.",
+        "zh": "最初八个月，我们按席位定价。这并不合适：五人团队运行二十个自动化，与另一个只运行两个自动化的五人团队支付一样的费用。我们按人数收费，却没有衡量客户真正使用的能力。"
+      },
+      {
+        "kind": "heading",
+        "en": "Why seats break for automation tools",
+        "zh": "席位模式为何不适合自动化"
+      },
+      {
+        "kind": "paragraph",
+        "en": "A seat-based price makes sense when the product’s value scales with how many people log in. Automation tools do not work that way. The whole point is that a workflow runs without a person watching it, so the number of people on your team has almost nothing to do with how much value you are getting out of the platform.",
+        "zh": "当产品价值随登录人数增加时，席位模式很合理。但自动化的目标是无需人盯着运行，人数与获得的价值没有直接对应关系。"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Usage-based pricing tied to runs fixes that mismatch directly. A team of three running 40,000 workflow runs a month is clearly getting more value, and using more of our infrastructure, than a team of thirty running four hundred. Billing them the same amount never made sense, for us or for them.",
+        "zh": "按运行用量收费可以解决这种错配。三人团队每月运行四万次，显然比三十人团队每月运行四百次使用更多基础设施，也获得更多价值。"
+      },
+      {
+        "kind": "heading",
+        "en": "What it looks like now",
+        "zh": "现在如何计费"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Every plan includes unlimited seats and unlimited active workflows. You pay for what actually runs, and you can see exactly what that will cost before you commit to a tier, using the calculator on our pricing page.",
+        "zh": "团队按实际运行量选择方案，并通过用量演示估算成本。参考站文章与方案页的部分额度说明不同，模板保留各页面的演示语境。"
+      }
+    ]
+  },
+  {
+    "slug": "how-a-40-person-support-team-cut-response-time-by-70-percent",
+    "title": {
+      "zh": "40 人支持团队如何缩短响应时间",
+      "en": "How a 40-person support team cut response time by 70 percent"
+    },
+    "summary": {
+      "zh": "一个自动运行的 Zendesk 到 Slack 升级流程。",
+      "en": "Inside a Zendesk to Slack escalation workflow that runs itself."
+    },
+    "category": "Customers",
+    "author": "Marcus Webb",
+    "date": "2026-07-18",
+    "image": "ozo1Ky3k0JN6xUeSXLbeiVz61I.png",
+    "imageAlt": {
+      "zh": "40 人支持团队如何缩短响应时间示意图",
+      "en": "Illustration of a support ticket triage and escalation workflow"
+    },
+    "blocks": [
+      {
+        "kind": "paragraph",
+        "en": "A 40-person support team was closing tickets in just under four hours on average before they adopted Aigent. Every ticket was manually triaged, tagged, and routed by a human before anyone started working on it, which meant urgent issues sometimes sat in the same queue as routine password resets.",
+        "zh": "采用 Aigent 之前，这支 40 人团队平均需要近四小时处理工单。所有请求都先由人工分类、标记、分配，紧急问题可能与普通密码重置排在同一个队列。"
+      },
+      {
+        "kind": "heading",
+        "en": "The workflow they built",
+        "zh": "他们搭建的工作流"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Their first automation triaged every incoming ticket automatically: enrich it with account and plan data, score urgency with a model, then route it to the right queue and, for anything above a severity threshold, page the on-call engineer directly instead of waiting for a human to notice it in the queue.",
+        "zh": "新工单先补全账户和方案信息，再由模型评估紧急程度，然后路由到正确队列。超过严重程度阈值的请求，会直接提醒值班工程师。"
+      },
+      {
+        "kind": "paragraph",
+        "en": "The rollout took about two weeks, most of which was spent tuning the urgency-scoring thresholds against real historical tickets rather than building the workflow itself. Once the thresholds were dialed in, the team turned it on for all incoming tickets in a single afternoon.",
+        "zh": "上线用了约两周，主要时间花在使用历史工单调整评分阈值，而非搭建流程。阈值调好后，团队在一个下午将它应用到全部新工单。"
+      },
+      {
+        "kind": "heading",
+        "en": "The result",
+        "zh": "结果"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Average first response time dropped from just under four hours to about 70 seconds, a reduction of roughly 70 percent in resolution time end to end. The team did not grow headcount to get there. They removed the manual triage step that was sitting in front of every single ticket.",
+        "zh": "参考案例展示首次响应从近四小时降到约 70 秒，整体解决时间约减少 70%。团队没有增加人数，而是移除了每张工单之前的人工分流环节。"
+      }
+    ]
+  },
+  {
+    "slug": "scaling-automation-across-twelve-markets",
+    "title": {
+      "zh": "将自动化扩展到十二个市场",
+      "en": "Scaling automation across twelve markets"
+    },
+    "summary": {
+      "zh": "同一个工作流，面对不同区域的要求。",
+      "en": "What changes when a workflow has to work the same way in every region."
+    },
+    "category": "Customers",
+    "author": "Marcus Webb",
+    "date": "2026-06-10",
+    "image": "9WP7XoFGVqCWIt0TeuAZ2UUZYt4.png",
+    "imageAlt": {
+      "zh": "将自动化扩展到十二个市场示意图",
+      "en": "Illustration of one automation workflow scaling across twelve global markets"
+    },
+    "blocks": [
+      {
+        "kind": "paragraph",
+        "en": "Rolling out the same automation across twelve markets sounds like it should be a copy-paste exercise. In practice, every market had a different CRM, a different set of compliance rules, and a support team working in a different primary language, and the workflow had to account for all three without turning into twelve separate systems to maintain.",
+        "zh": "同一自动化部署到十二个市场，看起来只需复制粘贴。实际每个市场都有不同 CRM、合规规则和支持语言，需要兼顾这些差异，又不能维护十二套系统。"
+      },
+      {
+        "kind": "heading",
+        "en": "One workflow, twelve configurations",
+        "zh": "一个工作流，十二套配置"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Rather than build twelve versions of the same automation, the team built one workflow with the market-specific logic pulled out into configuration: which CRM to write to, which data-residency region to store payloads in, and which language to route language-detection output through. The workflow graph itself never changed between markets.",
+        "zh": "团队把 CRM 写入目标、载荷驻留区域和语言路由从流程中抽为配置。市场之间的工作流图保持一致。"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Data residency mattered more than expected. Two of the twelve markets required customer data to stay within a specific region end to end, so Aigent’s region-pinning options for step execution and storage did the work that would otherwise have meant standing up separate infrastructure per region.",
+        "zh": "数据驻留比预想更重要。两个市场要求客户数据全程留在特定区域，通过执行与存储的区域固定设置，避免单独搭建基础设施。"
+      },
+      {
+        "kind": "heading",
+        "en": "What scaling actually took",
+        "zh": "扩展真正需要什么"
+      },
+      {
+        "kind": "paragraph",
+        "en": "Rolling out to a new market now takes about three days: point the workflow at the new CRM’s credentials, confirm the residency setting, and run a week of shadow traffic before switching it live. The first market took six weeks to get right. The twelfth took three days, because the workflow itself was already solved.",
+        "zh": "新市场配置约需三天：提供新 CRM 凭据，确认区域设置，运行一周影子流量，再正式切换。第一个市场花了六周，第十二个只需要三天，因为工作流问题已经解决。"
+      }
+    ]
+  }
+]

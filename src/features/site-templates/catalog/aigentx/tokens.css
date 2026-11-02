@@ -1,0 +1,4 @@
+@font-face{font-family:AxPoppins;src:url('/templates/aigentx/fonts/poppins-latin-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:AxPoppins;src:url('/templates/aigentx/fonts/poppins-latin-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:AxPoppins;src:url('/templates/aigentx/fonts/poppins-latin-700.woff2') format('woff2');font-weight:700;font-display:swap}
+.ax{--ax-bg:#03030f;--ax-panel:#0b0b1a;--ax-text:#eeeeF6;--ax-muted:#9999ad;--ax-accent:#55f1c5;--ax-line:#ffffff12;--ax-glass:linear-gradient(130deg,#ffffff07,#ffffff02 50%,#8b7ec20a);--ax-highlight:#ffffff15;--ax-shadow:inset 0 0 24px #c6b1ff09,0 10px 32px #0003;--ax-radius:2px;--ax-container:1320px;--ax-heading:clamp(28px,3.1vw,44px);--ax-section:clamp(24px,2.5vw,36px);--ax-body:16px;--ax-space:clamp(56px,7vw,100px);--ax-scroll-thumb:#414b55;--ax-scroll-hover:#6e9b92;--ax-scroll-track:#050611;--ax-scroll-width:8px;--ax-scroll-radius:8px}
