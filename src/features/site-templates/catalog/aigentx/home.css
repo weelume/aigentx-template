@@ -11,7 +11,8 @@
 .ax-home .ax-hero-copy h1{font-size:var(--ax-hero-title);line-height:var(--ax-hero-leading);letter-spacing:-.045em;max-width:890px}
 .ax-hero-copy .ax-eyebrow{font:600 14px/1.5 AxPoppins,AxMiSans,sans-serif;letter-spacing:.1em;margin-bottom:22px;background:#03030f70}
 .ax-home .ax-eyebrow:before{content:'|· ';opacity:.7}.ax-home .ax-eyebrow:after{content:' ·|';opacity:.7}
-.ax-hero-copy p{font-size:17px;line-height:1.4;color:#bec5cd;margin:9px 0 24px}
+/* 首页段落优先于通用段落重置，保留说明与按钮之间的留白。 */
+.ax-home .ax-hero-copy p{font-size:17px;line-height:1.4;color:#bec5cd;margin:9px 0 24px}
 .ax-hero-copy small{display:block;color:var(--ax-muted);font-size:12px;line-height:1.5;margin-top:12px}
 .ax-trusted{position:relative;text-align:center;font-size:14px;z-index:2;margin-top:10px}
 .ax-logo-mask{overflow:hidden;max-width:760px;margin:24px auto 0;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
@@ -131,7 +132,7 @@
  .ax-home .ax-hero-bg{height:1000px!important;top:-40px}
  .ax-hero-copy{grid-template-columns:1fr;text-align:center;gap:20px;padding-bottom:36px}
  .ax-hero-copy h1{margin-inline:auto;max-width:620px}
- .ax-hero-copy p{max-width:420px;margin:0 auto 22px;font-size:16px}
+ .ax-home .ax-hero-copy p{max-width:420px;margin:0 auto 22px;font-size:16px}
  .ax-hero-copy .ax-eyebrow{font-size:14px;margin-bottom:18px}
  .ax-trusted{font-size:14px;margin-top:10px}
  .ax-home .ax-section{padding:64px 0}
@@ -159,7 +160,7 @@
  .ax-home .ax-hero-bg{height:850px!important;width:calc(100vw - var(--ax-scroll-width));top:-40px}
  .ax-hero-copy{gap:22px;padding-bottom:40px}
  .ax-home .ax-hero-copy h1{line-height:var(--ax-hero-leading);letter-spacing:-.04em;white-space:normal}
- .ax-hero-copy p{font-size:14px;max-width:250px;line-height:1.3}
+ .ax-home .ax-hero-copy p{font-size:14px;max-width:250px;line-height:1.3}
  .ax-hero-copy small{font-size:11px;margin-top:12px}
  .ax-hero-copy .ax-eyebrow{font-size:13px;white-space:nowrap;padding:3px 6px}
  .ax-trusted{font-size:13px;margin-top:10px}
