@@ -3,9 +3,9 @@
   "format": "git-template-verification",
   "formatVersion": "0.2.0",
   "status": "passed",
-  "checkedAt": "2026-11-03T03:39:17.708Z",
-  "sourceCommit": "e4e53275e3ced094310027a1ffb18019922dcaca",
-  "sourceDigest": "146128d171dbb0e5477bbb9938351104014f2639077c85cfd487fa790700bee5",
+  "checkedAt": "2026-11-03T04:01:33.509Z",
+  "sourceCommit": "a463a2135121af6d564dcda088714d10c98d79fc",
+  "sourceDigest": "bcc6fb7a0461c0d226160944b5ffd6cb118919b1385275e5097a4a7b528db3ad",
   "environment": {
     "platform": "linux-wsl2",
     "arch": "x64",
@@ -25,8 +25,8 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-11-03T03:38:39.089Z",
-      "finishedAt": "2026-11-03T03:38:40.294Z"
+      "startedAt": "2026-11-03T04:01:10.099Z",
+      "finishedAt": "2026-11-03T04:01:11.307Z"
     },
     {
       "id": "typecheck",
@@ -38,8 +38,8 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-11-03T03:38:40.296Z",
-      "finishedAt": "2026-11-03T03:38:43.578Z"
+      "startedAt": "2026-11-03T04:01:11.308Z",
+      "finishedAt": "2026-11-03T04:01:13.048Z"
     },
     {
       "id": "lint",
@@ -51,8 +51,8 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-11-03T03:38:43.578Z",
-      "finishedAt": "2026-11-03T03:38:47.738Z"
+      "startedAt": "2026-11-03T04:01:13.049Z",
+      "finishedAt": "2026-11-03T04:01:15.812Z"
     },
     {
       "id": "test",
@@ -64,8 +64,8 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-11-03T03:38:47.739Z",
-      "finishedAt": "2026-11-03T03:38:48.821Z"
+      "startedAt": "2026-11-03T04:01:15.813Z",
+      "finishedAt": "2026-11-03T04:01:16.538Z"
     },
     {
       "id": "build",
@@ -77,8 +77,8 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-11-03T03:38:48.822Z",
-      "finishedAt": "2026-11-03T03:39:16.053Z"
+      "startedAt": "2026-11-03T04:01:16.538Z",
+      "finishedAt": "2026-11-03T04:01:32.164Z"
     },
     {
       "id": "http",
@@ -90,8 +90,8 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-11-03T03:39:16.774Z",
-      "finishedAt": "2026-11-03T03:39:17.180Z"
+      "startedAt": "2026-11-03T04:01:32.765Z",
+      "finishedAt": "2026-11-03T04:01:33.086Z"
     }
   ],
   "services": [
@@ -99,13 +99,13 @@
       "id": "web",
       "status": "passed",
       "stopped": true,
-      "checkedAt": "2026-11-03T03:39:17.708Z"
+      "checkedAt": "2026-11-03T04:01:33.509Z"
     }
   ],
   "limitations": [
-    "1.0.2 仅调整中文首页主标题行距为 1.25，英文保持原有排版；三端中文与手机/桌面英文通过内置浏览器检查，无横向溢出。",
-    "本次重新执行冻结安装、类型、Lint、8项测试、生产构建及32条业务路径与2条404回归；整站视觉及复杂交互沿用1.0.1历史证据，未在本次全部重测。",
-    "粒子噪声、部分曲线和按钮像素高光仍有差异，不声明全部动效逐帧一致；系统减少动态效果分支未实机切换。",
-    "设计与素材商业再分发授权未确认，restricted、listed=false。"
+    "1.0.3修复首页说明与按钮间距被通用段落重置覆盖；内置浏览器实测桌面/宽平板24px，窄屏/手机22px，无横向溢出。",
+    "本次重新执行冻结安装、类型、Lint、8项测试、生产构建及32条业务路径与2条404回归。",
+    "本次仅复查首屏文字与按钮排版；复杂动效和全站视觉仍以1.0.1历史范围为准，未全部重测。",
+    "素材商业再分发授权未确认，restricted、listed=false。"
   ]
 }
