@@ -2,10 +2,10 @@
   "$schema": "../schemas/verification.schema.json",
   "format": "git-template-verification",
   "formatVersion": "0.2.0",
-  "status": "incomplete",
-  "checkedAt": "2026-11-03T02:48:08.0479081Z",
-  "sourceCommit": "26e5038cbf510ddf26fb783d6dc4c2ad7db50da4",
-  "sourceDigest": "cf046235912d1858782b371d7f68d3df15b86a515bfb1e05c831af2db36341b7",
+  "status": "passed",
+  "checkedAt": "2026-11-03T02:51:50.021Z",
+  "sourceCommit": "23d5da4e04eed94e003455666a6e07e30e1ae62a",
+  "sourceDigest": "af73ba9b710d52273bf108054c08eda9fc5f83f9745541ac0f50030139e3c2bd",
   "environment": {
     "platform": "linux-wsl2",
     "arch": "x64",
@@ -25,8 +25,8 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-11-02T17:02:03.152Z",
-      "finishedAt": "2026-11-02T17:02:10.576Z"
+      "startedAt": "2026-11-03T02:49:04.438Z",
+      "finishedAt": "2026-11-03T02:49:09.007Z"
     },
     {
       "id": "typecheck",
@@ -38,8 +38,8 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-11-02T17:02:10.577Z",
-      "finishedAt": "2026-11-02T17:02:13.735Z"
+      "startedAt": "2026-11-03T02:49:09.009Z",
+      "finishedAt": "2026-11-03T02:49:13.119Z"
     },
     {
       "id": "lint",
@@ -51,8 +51,8 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-11-02T17:02:13.736Z",
-      "finishedAt": "2026-11-02T17:02:16.999Z"
+      "startedAt": "2026-11-03T02:49:13.123Z",
+      "finishedAt": "2026-11-03T02:49:21.359Z"
     },
     {
       "id": "test",
@@ -64,8 +64,8 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-11-02T17:02:17Z",
-      "finishedAt": "2026-11-02T17:02:17.946Z"
+      "startedAt": "2026-11-03T02:49:21.360Z",
+      "finishedAt": "2026-11-03T02:49:23.018Z"
     },
     {
       "id": "build",
@@ -77,8 +77,8 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-11-02T17:02:17.946Z",
-      "finishedAt": "2026-11-02T17:02:43.053Z"
+      "startedAt": "2026-11-03T02:49:23.018Z",
+      "finishedAt": "2026-11-03T02:49:59.533Z"
     },
     {
       "id": "http",
@@ -90,8 +90,8 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-11-02T17:05:51.514Z",
-      "finishedAt": "2026-11-02T17:05:51.901Z"
+      "startedAt": "2026-11-03T02:50:00.563Z",
+      "finishedAt": "2026-11-03T02:50:01.153Z"
     }
   ],
   "services": [
@@ -99,11 +99,14 @@
       "id": "web",
       "status": "passed",
       "stopped": true,
-      "checkedAt": "2026-11-02T17:05:54.235Z"
+      "checkedAt": "2026-11-03T02:51:50.021Z"
     }
   ],
   "limitations": [
-    "1.0.1 首页复查正在验收；1.0.0 历史报告不能作为本轮源码的通过证据。",
-    "主要视觉差异与剩余限制见 .tpl/docs/HOME-REVIEW.md。"
+    "1.0.1 主要修正首页构图、连接图、交错时间轴、团队节点图与计费滑轨；具体差异见 HOME-REVIEW.md。",
+    "中英文首页四档布局和主要交互实际检查；完整32条业务路径与2条404通过HTTP回归。",
+    "粒子噪声、部分曲线和按钮像素高光仍有差异，不声明全部动效逐帧一致。",
+    "系统减少动态效果分支未实机切换；原站平板复取一度超时，布局同时以已取得的参考CSS核对。",
+    "设计与素材商业再分发授权未确认，restricted、listed=false。"
   ]
 }
