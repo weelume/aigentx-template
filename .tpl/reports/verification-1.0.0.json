@@ -1,0 +1,113 @@
+{
+  "$schema": "../schemas/verification.schema.json",
+  "format": "git-template-verification",
+  "formatVersion": "0.2.0",
+  "status": "passed",
+  "checkedAt": "2026-11-02T17:06:42.270Z",
+  "sourceCommit": "26e5038cbf510ddf26fb783d6dc4c2ad7db50da4",
+  "sourceDigest": "cf046235912d1858782b371d7f68d3df15b86a515bfb1e05c831af2db36341b7",
+  "environment": {
+    "platform": "linux-wsl2",
+    "arch": "x64",
+    "node": "v24.16.0",
+    "packageManager": "pnpm@9.15.4",
+    "cleanDirectory": true,
+    "localGitClone": true
+  },
+  "checks": [
+    {
+      "id": "install",
+      "cwd": ".",
+      "argv": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "startedAt": "2026-11-02T17:02:03.152Z",
+      "finishedAt": "2026-11-02T17:02:10.576Z"
+    },
+    {
+      "id": "typecheck",
+      "cwd": ".",
+      "argv": [
+        "pnpm",
+        "run",
+        "typecheck"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "startedAt": "2026-11-02T17:02:10.577Z",
+      "finishedAt": "2026-11-02T17:02:13.735Z"
+    },
+    {
+      "id": "lint",
+      "cwd": ".",
+      "argv": [
+        "pnpm",
+        "run",
+        "lint"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "startedAt": "2026-11-02T17:02:13.736Z",
+      "finishedAt": "2026-11-02T17:02:16.999Z"
+    },
+    {
+      "id": "test",
+      "cwd": ".",
+      "argv": [
+        "pnpm",
+        "run",
+        "test"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "startedAt": "2026-11-02T17:02:17.000Z",
+      "finishedAt": "2026-11-02T17:02:17.946Z"
+    },
+    {
+      "id": "build",
+      "cwd": ".",
+      "argv": [
+        "pnpm",
+        "run",
+        "build"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "startedAt": "2026-11-02T17:02:17.946Z",
+      "finishedAt": "2026-11-02T17:02:43.053Z"
+    },
+    {
+      "id": "http",
+      "cwd": ".",
+      "argv": [
+        "node",
+        "scripts/verify-http.mjs",
+        "http://127.0.0.1:43720"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "startedAt": "2026-11-02T17:05:51.514Z",
+      "finishedAt": "2026-11-02T17:05:51.901Z"
+    }
+  ],
+  "services": [
+    {
+      "id": "web",
+      "status": "passed",
+      "stopped": true,
+      "checkedAt": "2026-11-02T17:05:54.235Z"
+    }
+  ],
+  "limitations": [
+    "在本机 WSL Linux 文件系统独立克隆安装、构建和启动，未部署到服务器。",
+    "全部 32 条业务路径和 2 条未知路径真实 HTTP 验收通过。",
+    "三端及 320px 共 128 条浏览器布局检查通过；主要动效与交互已实际触发。",
+    "粒子噪声、曲线及部分时序是近似重实现，尚未完成全部动效逐帧量化对照。",
+    "减少动态效果分支已实现，未实机切换系统媒体偏好；原始示意图片保留英文像素文字。",
+    "第三方设计与图片未取得商业再分发许可，restricted、listed=false。"
+  ]
+}

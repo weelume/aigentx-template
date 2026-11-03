@@ -156,6 +156,84 @@
       "source": "https://framerusercontent.com/images/sPeMrGaLwXZJtuorjDPaJkfXpPo.png",
       "sha256": "451d1b9ec4c4fa124c1a05aeb85ea5bab6f8affdade4f2ec685bc7c86ac2b64b",
       "license": "参考站素材，未取得商业再分发许可"
+    },
+    {
+      "file": "O0gbfceGGSvgl5lAM7Dllno7dVo.png",
+      "source": "https://framerusercontent.com/images/O0gbfceGGSvgl5lAM7Dllno7dVo.png?width=512&height=512",
+      "sha256": "3f7a006d791652a79566b53819d814c517db57ebc9ad925f37d5e016a4258f3d",
+      "license": "参考站素材，未取得商业再分发许可"
+    },
+    {
+      "file": "icons/slack.svg",
+      "source": "https://aigentx.framer.website/ (Port Cell CSS mask: Slack)",
+      "sha256": "3256b8494fddd91221b0b2026c9d8fe34e7bfe9683fffb46c918307b35adb614",
+      "license": "参考站图标，保留第三方品牌权利；未确认商业再分发许可"
+    },
+    {
+      "file": "icons/stripe.svg",
+      "source": "https://aigentx.framer.website/ (Port Cell CSS mask: Stripe)",
+      "sha256": "399970d450fb1dc4611b7bda6eb35b18a5d8b656b1f43d23bb962e182b7d7976",
+      "license": "参考站图标，保留第三方品牌权利；未确认商业再分发许可"
+    },
+    {
+      "file": "icons/github.svg",
+      "source": "https://aigentx.framer.website/ (Port Cell CSS mask: GitHub)",
+      "sha256": "45f6a61a21cd657cda55c5a2e45565d9ce6bcecfbf4fa678cd0ff8f53936efee",
+      "license": "参考站图标，保留第三方品牌权利；未确认商业再分发许可"
+    },
+    {
+      "file": "icons/hubspot.svg",
+      "source": "https://aigentx.framer.website/ (Port Cell CSS mask: HubSpot)",
+      "sha256": "c3f748648d06baf4806bf2e576a12e115260ae989e8e8199bd830d2b7d7ac259",
+      "license": "参考站图标，保留第三方品牌权利；未确认商业再分发许可"
+    },
+    {
+      "file": "icons/notion.svg",
+      "source": "https://aigentx.framer.website/ (Port Cell CSS mask: Notion)",
+      "sha256": "4196065e65c63117e7a32744ab4dc7abe9e3f0a4d80ede83b6e137771e5a3541",
+      "license": "参考站图标，保留第三方品牌权利；未确认商业再分发许可"
+    },
+    {
+      "file": "icons/linear.svg",
+      "source": "https://aigentx.framer.website/ (Port Cell CSS mask: Linear)",
+      "sha256": "f9d2ba932bb3ab2ede56c9312f09db6e54e16b89c96d01e18f3f65f08beb21e8",
+      "license": "参考站图标，保留第三方品牌权利；未确认商业再分发许可"
+    },
+    {
+      "file": "icons/openai.svg",
+      "source": "https://aigentx.framer.website/ (Port Cell CSS mask: OpenAI)",
+      "sha256": "20b171b3cf344dd9a68f9259f830c4b9b513dbb6b1aee699a4221a3b184485cd",
+      "license": "参考站图标，保留第三方品牌权利；未确认商业再分发许可"
+    },
+    {
+      "file": "icons/snowflake.svg",
+      "source": "https://aigentx.framer.website/ (Port Cell CSS mask: Snowflake)",
+      "sha256": "3755e5e7a7bf9a9cb0710dcef9e7ea18ac749ac891f54510cf29f66a151a7a0a",
+      "license": "参考站图标，保留第三方品牌权利；未确认商业再分发许可"
+    },
+    {
+      "file": "icons/salesforce.svg",
+      "source": "https://aigentx.framer.website/ (Port Cell CSS mask: Salesforce)",
+      "sha256": "2e99d1fcec8f4dfd9cb0a6c9f196e2ddba7f1a221eb274be078a20dfe7724cdc",
+      "license": "参考站图标，保留第三方品牌权利；未确认商业再分发许可"
+    },
+    {
+      "file": "icons/twilio.svg",
+      "source": "https://aigentx.framer.website/ (Port Cell CSS mask: Twilio)",
+      "sha256": "ed2d7dea8fd30d3575729ba071a45314746b2fbb5dec6f5c0d375507c3705cd8",
+      "license": "参考站图标，保留第三方品牌权利；未确认商业再分发许可"
+    },
+    {
+      "file": "icons/airtable.svg",
+      "source": "https://aigentx.framer.website/ (Port Cell CSS mask: Airtable)",
+      "sha256": "787eb4ba5998debaa768fe060670c7bd67080bbd1f79d6a804a8beb50f1d603f",
+      "license": "参考站图标，保留第三方品牌权利；未确认商业再分发许可"
+    },
+    {
+      "file": "icons/shopify.svg",
+      "source": "https://aigentx.framer.website/ (Port Cell CSS mask: Shopify)",
+      "sha256": "a9a5aa3e5b55630efc0fb42b6afef2ff60a56de970bc318d15952ac20eacf467",
+      "license": "参考站图标，保留第三方品牌权利；未确认商业再分发许可"
     }
   ],
   "fonts": "MiSans 与 Poppins；许可随字体目录交付"
