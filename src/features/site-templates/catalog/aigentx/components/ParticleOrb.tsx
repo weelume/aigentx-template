@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { asset } from '../config/brand'
-import { seededRandom, spherePoints, scatterProgress } from './orbGeometry'
+import { seededRandom, spherePoints, scatterProgress, heroExitProgress } from './orbGeometry'
 
 type MarkPoint = { x: number; y: number; seed: number; size: number }
 type Burst = { x: number; y: number; time: number }
@@ -16,7 +16,7 @@ export function ParticleOrb() {
     const ctx = canvas.getContext('2d')
     if (!ctx) { console.error('[aigentx:orb] Canvas 2D unavailable'); return }
     let frame = 0, visible = true, time = 0, last = 0, width = 1400, height = 1400, ratio = 1, scatter = 0
-    let pointerX = 0, pointerY = 0, targetX = 0, targetY = 0, disposed = false
+    let pointerX = 0, pointerY = 0, targetX = 0, targetY = 0, disposed = false, waitingForLayout = false
     const points = spherePoints(window.innerWidth < 768 ? 2250 : 4500), mark: MarkPoint[] = [], bursts: Burst[] = []
     const sprites = ['#ffffff', '#7cf5ce', '#1fbf8f'].map(color => {
       const sprite = document.createElement('canvas'); sprite.width = sprite.height = 64
@@ -66,7 +66,16 @@ export function ParticleOrb() {
       if (visible && !document.hidden) {
         if (last) time += Math.min(now - last, 50) / 1000
         ctx.setTransform(ratio, 0, 0, ratio, 0, 0); ctx.clearRect(0, 0, width, height)
-        const bounds = canvas.parentElement!.getBoundingClientRect(), targetScatter = reduced ? 0 : Math.max(0, Math.min(1, -bounds.top / bounds.height))
+        const bounds = canvas.parentElement!.getBoundingClientRect(), exit = heroExitProgress(bounds.top, bounds.height)
+        if (exit === null) {
+          if (!waitingForLayout) console.debug('[aigentx:orb] waiting for layout', { height: bounds.height })
+          waitingForLayout = true; canvas.dataset.motionState = JSON.stringify({ state: 'waiting-for-layout' })
+          last = now; if (!reduced) frame = requestAnimationFrame(draw)
+          return
+        }
+        if (waitingForLayout) console.debug('[aigentx:orb] layout restored')
+        waitingForLayout = false
+        const targetScatter = reduced ? 0 : exit
         scatter += (targetScatter - scatter) * .12; pointerX += (Math.max(-1, Math.min(1, targetX)) - pointerX) * .08; pointerY += (Math.max(-1, Math.min(1, targetY)) - pointerY) * .08
         const assembly = reduced ? 1 : Math.max(0, Math.min(1, (time - .15) / 1.8)), entrance = (1 - assembly * assembly * (3 - 2 * assembly)) * 1.25
         const form = reduced ? 1 : Math.max(0, Math.min(1, (time - 1.1) / 1.7)), morph = form * form * (3 - 2 * form)

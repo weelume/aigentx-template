@@ -16,3 +16,9 @@ export function scatterProgress(progress: number, seed: number): number {
   const value = Math.max(0, Math.min(1, (progress - seed * .45) / .55))
   return value * value * (3 - 2 * value)
 }
+
+/** 路由挂起/切换时 DOM 可暂时没有布局，此状态不能参与滚动比例计算。 */
+export function heroExitProgress(top: number, height: number): number | null {
+  if (height <= 0 || !Number.isFinite(top) || !Number.isFinite(height)) return null
+  return Math.max(0, Math.min(1, -top / height))
+}
